@@ -15,6 +15,39 @@ angular.module('app.services')
         indexes = $localStorage.pokedex.indexes;
 
     return {
+      getPokemonById: function (id) {
+        var def = $q.defer();
+
+        var cachedPokemonIndex = indexes[id],
+            cachedPokemonData = angular.isNumber(cachedPokemonIndex) && DB[cachedPokemonIndex];
+
+
+        var _persistPokemonResearchData = function (pokemonResearchData) {
+          cachedPokemonData.researchData = pokemonResearchData
+        };
+
+
+        if(cachedPokemonData.researchData) {
+          def.resolve(cachedPokemonData.researchData);
+        }
+        else {
+          Queries.getPokemonById(id)
+          .then(function (response) {
+            if (response.status === 200) {
+              var researchData = response.data;
+
+              _persistPokemonResearchData(researchData);
+
+              def.resolve(researchData);
+            }
+            else {
+              def.reject(response.error)
+            }
+          })
+        }
+
+        return def.promise;
+      },
       getPokemon: function (offset) {
         var def = $q.defer();
 
@@ -26,8 +59,9 @@ angular.module('app.services')
             if(!id) return;
 
             if(!indexes[id]) {  //Pokemon already not cached
-              indexes[id] = _pokemon_;
+              _pokemon_.id = +id;
               DB.push(_pokemon_);
+              indexes[_pokemon_.id] = DB.length - 1;  //Save index of saved pokemon
             }
           })
         };

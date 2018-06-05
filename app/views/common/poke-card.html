@@ -1,0 +1,51 @@
+<div class="row poke-card" ng-click="PokeCardCtrl.revealPokemon()">
+  <div class="col s12" ng-if="!pokemon.researchData">
+    <div class="row">
+      <div class="col s12">
+        <div class="pokeball"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 name">
+        {{pokemon.name}} (Touch to reveal)
+      </div>
+    </div>
+  </div>
+  <div class="col s12 research-card" ng-if="pokemon.researchData" ng-init="pData = pokemon.researchData">
+    <div class="row">
+      <div class="col s12">
+        <img ng-src="{{pData.sprites.front_default}}" alt="" class="pokemon-avatar">
+      </div>
+    </div>
+    <div class="row margin-bottom--0">
+      <div class="col s12">
+        <label>Name: </label>
+        <span>{{pData.name}}</span>
+      </div>
+    </div>
+    <div class="row margin-bottom--0">
+      <div class="col s12">
+        <label>XP: </label>
+        <span>{{pData.base_experience}}</span>
+      </div>
+    </div>
+    <div class="row margin-bottom--0">
+      <div class="col s12">
+        <label>Height: </label>
+        <span>{{pData.height}}</span>
+      </div>
+    </div>
+    <div class="row margin-bottom--0">
+      <div class="col s12">
+        <label>Weight: </label>
+        <span>{{pData.weight}}</span>
+      </div>
+    </div>
+    <div class="row margin-bottom--0" ng-repeat="obj in pData.stats">
+      <div class="col s12">
+        <label>{{obj.stat.name}}: </label>
+        <span>{{obj.base_stat}}</span>
+      </div>
+    </div>
+  </div>
+</div>

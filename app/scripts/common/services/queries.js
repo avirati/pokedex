@@ -8,6 +8,13 @@ angular.module('app.services')
         url: BASE_URL + '/pokemon?' + 'limit=' + limit + '&offset=' + offset,
         cache: true
       })
+    },
+    getPokemonById: function (id) {
+      return $http({
+        method: 'GET',
+        url: BASE_URL + '/pokemon/' + id,
+        cache: true
+      })
     }
   };
 }]);
