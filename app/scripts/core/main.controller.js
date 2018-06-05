@@ -1,6 +1,6 @@
-angular.module("app")
-.controller("ctrl.main", [
-  "$scope",
+angular.module('app')
+.controller('ctrl.main', [
+  '$scope',
 
   function ($scope) {
     //Variables

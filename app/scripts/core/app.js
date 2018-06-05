@@ -4,6 +4,7 @@ angular.module('app.directives', []);
 angular.module('app.controllers', []);
 angular.module('app.services', []);
 angular.module('app.routes', ['ui.router']);
+angular.module('app.constants', []);
 
 angular.module('app', [
   'ngStorage',
@@ -11,5 +12,6 @@ angular.module('app', [
   'app.directives',
   'app.controllers',
   'app.services',
-  'app.routes'
+  'app.routes',
+  'app.constants'
 ]);
