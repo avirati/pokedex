@@ -2,7 +2,7 @@
   <div class="col s12" ng-if="!pokemon.researchData">
     <div class="row">
       <div class="col s12">
-        <div class="pokeball"></div>
+        <div class="pokeball" ng-class="{'disabled': PokeCardCtrl.flags.loading}"></div>
       </div>
     </div>
     <div class="row">
@@ -47,5 +47,6 @@
         <span>{{obj.base_stat}}</span>
       </div>
     </div>
+    <div class="heart" ng-click="PokeCardCtrl.toggleSavePokemon()" ng-class="{'active': pokemon.saved}"></div>
   </div>
 </div>
