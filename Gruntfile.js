@@ -427,6 +427,18 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      serviceWorker: {
+        expand: true,
+        cwd: '<%= yeoman.app %>',
+        dest: '<%= yeoman.dist %>',
+        src: 'serviceWorker.js'
+      },
+      fonts: {
+        expand: true,
+        cwd: './bower_components/materialize/dist',
+        dest: '<%= yeoman.dist %>',
+        src: 'fonts/**/*.*'
       }
     },
 
@@ -494,6 +506,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
+    'copy:serviceWorker',
     'cdnify',
     'cssmin',
     'uglify',
@@ -503,9 +516,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
-    'newer:jscs',
-    'test',
     'build'
   ]);
 };
