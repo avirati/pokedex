@@ -4,8 +4,9 @@ angular.module('app.services')
   '$q',
   'Queries',
   'FETCH_LIMIT',
+  'FETCH_OFFSET',
 
-  function ($localStorage, $q, Queries, FETCH_LIMIT) {
+  function ($localStorage, $q, Queries, FETCH_LIMIT, FETCH_OFFSET) {
 
     $localStorage.pokedex = $localStorage.pokedex || {};
 
@@ -82,7 +83,7 @@ angular.module('app.services')
           })
         };
 
-        if(DB.length > 0 && DB.length >= offset) {  //If total cached pokemon is greater or equals to the offset, serve from cache
+        if(DB.length > 0 && DB.length > offset) {  //If total cached pokemon is greater or equals to the offset, serve from cache
           var _DB = angular.copy(DB);
           _markSavedPokemon(_DB);
 
@@ -100,8 +101,8 @@ angular.module('app.services')
               var pokemon = response.data.results;
 
               _persistPokemon(pokemon);
-
-              def.resolve(pokemon);
+              var updatedPokemon = angular.copy(DB);
+              def.resolve(updatedPokemon);
             }
             else {
               def.reject(response.error)

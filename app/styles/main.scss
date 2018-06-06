@@ -5,4 +5,7 @@
 
 .pokedex-app {
   padding-top: 45px;
+  padding-bottom: 50px;
+  height: calc(100vh - 106px);
+  overflow-y: auto;
 }
