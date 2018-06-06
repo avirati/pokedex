@@ -48,4 +48,49 @@
     right: 20px;
     top: 335px;
   }
+
+  .moves-list {
+    width: 50vw;
+    height: 150px;
+    overflow: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-top: 9px;
+
+    .pill {
+      text-transform: uppercase;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: fit-content;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-top: 5px;
+      box-shadow: 1px 1px 10px #eee;
+      font-size: 12px;
+      color: #777;
+      letter-spacing: 3px;
+      display: inline-block;
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .only-desktop {
+    display: none;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+  /* Styles */
+  .image-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+  }
+
+  .description-container {
+    display: inline-block;
+    vertical-align: top;
+  }
 }
