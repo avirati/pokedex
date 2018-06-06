@@ -1,8 +1,10 @@
-<div class="switch" ng-click="BinarySwitchCtrl.onSwitchToggled()">
-  <label>
+<div class="switch binary-switch" ng-click="BinarySwitchCtrl.onSwitchToggled()">
+  <label class="right">
     All
     <input type="checkbox" ng-model="BinarySwitchCtrl.checkbox">
     <span class="lever"></span>
     Saved
   </label>
+  <input type="text" class="left pokemon-filter" placeholder="Filter Pokemon !" ng-model="BinarySwitchCtrl.filterText"
+         ng-change="BinarySwitchCtrl.filterPokemon(BinarySwitchCtrl.filterText)">
 </div>

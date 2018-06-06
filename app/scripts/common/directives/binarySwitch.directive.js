@@ -6,7 +6,8 @@ angular.module('app.directives')
     replace: true,
     scope: {
       onToggledOn: '&',
-      onToggledOff: '&'
+      onToggledOff: '&',
+      onPokemonFilter: '&'
     },
     controller: 'ctrl.binarySwitch',
     controllerAs: 'BinarySwitchCtrl'

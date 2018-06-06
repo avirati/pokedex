@@ -7,7 +7,8 @@ angular.module('app.controllers')
 
     //Variables
     angular.extend(BinarySwitchCtrl, {
-      checkbox: false
+      checkbox: false,
+      filterText: ""
     });
 
     //Functions
@@ -21,6 +22,12 @@ angular.module('app.controllers')
           else {
             $scope.onToggledOff();
           }
+        });
+      },
+
+      filterPokemon: function (query) {
+        $scope.onPokemonFilter({
+          query: query
         });
       },
 

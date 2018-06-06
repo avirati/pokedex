@@ -37,6 +37,14 @@ angular.module('app.controllers')
         })
       },
 
+      filterPokemon: function (query) {
+        query = query || "";
+        $scope.pokemon.forEach(function (_pokemon_) {
+          var match = _pokemon_.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
+          _pokemon_.hide = !match;
+        })
+      },
+
       init: function () {
         $scope.getPokemon();
       }

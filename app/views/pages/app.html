@@ -1,4 +1,5 @@
-<div class="container-fluid">
-  <binary-switch on-toggled-on="showSavedPokemon()" on-toggled-off="showAllPokemon()"></binary-switch>
-  <poke-card ng-repeat="obj in pokemon" pokemon-data="obj"></poke-card>
+<div class="container-fluid pokedex-app">
+  <binary-switch on-toggled-on="showSavedPokemon()" on-toggled-off="showAllPokemon()"
+                 on-pokemon-filter="filterPokemon(query)"></binary-switch>
+  <poke-card ng-repeat="obj in pokemon" pokemon-data="obj" ng-if="!obj.hide"></poke-card>
 </div>
