@@ -2,6 +2,10 @@
 
 Pokedex - your personal encyclopedia for your pokemon adventures !
 
+![alt tag](https://github.com/avirati/pokedex/raw/master/screenshots/1.png)
+![alt tag](https://github.com/avirati/pokedex/raw/master/screenshots/2.png)
+![alt tag](https://github.com/avirati/pokedex/raw/master/screenshots/3.png)
+
 ### Tech
 
 Task Manager uses a number of open source projects to work properly:
