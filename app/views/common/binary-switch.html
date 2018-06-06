@@ -1,7 +1,7 @@
-<div class="switch binary-switch" ng-click="BinarySwitchCtrl.onSwitchToggled()">
+<div class="switch binary-switch">
   <label class="right">
     All
-    <input type="checkbox" ng-model="BinarySwitchCtrl.checkbox">
+    <input type="checkbox" ng-model="BinarySwitchCtrl.checkbox" ng-change="BinarySwitchCtrl.onSwitchToggled()">
     <span class="lever"></span>
     Saved
   </label>

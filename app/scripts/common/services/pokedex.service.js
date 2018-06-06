@@ -83,7 +83,7 @@ angular.module('app.services')
           })
         };
 
-        if(DB.length > 0 && DB.length > offset) {  //If total cached pokemon is greater or equals to the offset, serve from cache
+        if(getSaved || (DB.length > 0 && DB.length > offset)) {  //If total cached pokemon is greater or equals to the offset, serve from cache
           var _DB = angular.copy(DB);
           _markSavedPokemon(_DB);
 
@@ -102,6 +102,7 @@ angular.module('app.services')
 
               _persistPokemon(pokemon);
               var updatedPokemon = angular.copy(DB);
+              _markSavedPokemon(updatedPokemon);
               def.resolve(updatedPokemon);
             }
             else {
