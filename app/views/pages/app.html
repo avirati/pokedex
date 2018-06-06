@@ -1,3 +1,4 @@
 <div class="container-fluid">
+  <binary-switch on-toggled-on="showSavedPokemon()" on-toggled-off="showAllPokemon()"></binary-switch>
   <poke-card ng-repeat="obj in pokemon" pokemon-data="obj"></poke-card>
 </div>

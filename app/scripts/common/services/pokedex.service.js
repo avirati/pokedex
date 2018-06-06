@@ -18,9 +18,15 @@ angular.module('app.services')
         indexes = $localStorage.pokedex.indexes,
         savedPokemon = $localStorage.pokedex.savedPokemon;
 
-    var _markSavedPokemon = function (array) {
-      array.forEach(function (pokemon) {
+    var _markSavedPokemon = function (allPokemon) {
+      allPokemon.forEach(function (pokemon) {
         pokemon.saved = savedPokemon.indexOf(pokemon.id) > -1;
+      })
+    };
+
+    var _getSavedPokemon = function (allPokemon) {
+      return savedPokemon.map(function (id) {
+        return allPokemon[indexes[id]];
       })
     };
 
@@ -58,7 +64,7 @@ angular.module('app.services')
 
         return def.promise;
       },
-      getPokemon: function (offset) {
+      getPokemon: function (offset, getSaved) {
         var def = $q.defer();
 
         var _persistPokemon = function (pokemon) {
@@ -79,7 +85,13 @@ angular.module('app.services')
         if(DB.length > 0 && DB.length >= offset) {  //If total cached pokemon is greater or equals to the offset, serve from cache
           var _DB = angular.copy(DB);
           _markSavedPokemon(_DB);
-          def.resolve(_DB);
+
+          if(getSaved) {
+            def.resolve(_getSavedPokemon(_DB));
+          }
+          else {
+            def.resolve(_DB);
+          }
         }
         else {
           Queries.getPokemon(FETCH_LIMIT, offset)

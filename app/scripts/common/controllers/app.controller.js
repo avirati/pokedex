@@ -14,11 +14,26 @@ angular.module('app.controllers')
     //Functions
     angular.extend($scope, {
 
-      getPokemon: function () {
-        PokedexDB.getPokemon(currentOffset)
+      getPokemon: function (getSaved) {
+        PokedexDB.getPokemon(currentOffset, getSaved)
         .then(function (pokemon) {
           $scope.pokemon = pokemon;
           currentOffset += FETCH_OFFSET;
+        })
+      },
+
+      showSavedPokemon: function () {
+        var getSaved = true;
+        PokedexDB.getPokemon(currentOffset, getSaved)
+        .then(function (pokemon) {
+          $scope.pokemon = pokemon;
+        })
+      },
+
+      showAllPokemon: function () {
+        PokedexDB.getPokemon(currentOffset)
+        .then(function (pokemon) {
+          $scope.pokemon = pokemon;
         })
       },
 
